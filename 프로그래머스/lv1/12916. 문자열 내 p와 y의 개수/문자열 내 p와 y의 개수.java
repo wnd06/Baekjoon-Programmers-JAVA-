@@ -1,22 +1,18 @@
 class Solution {
     boolean solution(String s) {
-        boolean answer;
-        int num = 0;
-        int num_2 = 0;
+        boolean answer = true;
+        int num_1 = 0;
+        int num_2= 0;
         for(int i = 0; i < s.length(); i++){
-            
-            if(s.charAt(i) == 'p' || s.charAt(i) == 'P')
-                num++;
-            else if(s.charAt(i) == 'y' || s.charAt(i) == 'Y')
-                num_2++;
+            if('p' == s.charAt(i) || 'P' == s.charAt(i)){
+                num_1 += 1;
+            }
+            else if('y' == s.charAt(i) || 'Y' == s.charAt(i)){
+                num_2 += 1;
+            }
         }
-        if (num == num_2)
-            answer = true;
-        else
+        if(num_1 != num_2)
             answer = false;
-
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println(answer);
 
         return answer;
     }
