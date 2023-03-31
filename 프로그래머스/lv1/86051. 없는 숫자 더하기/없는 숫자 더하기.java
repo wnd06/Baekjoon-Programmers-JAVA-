@@ -7,5 +7,7 @@ class Solution {
         }
         answer = 45 - sum;
         return answer;
+        
+        //return answer;
     }
 }
