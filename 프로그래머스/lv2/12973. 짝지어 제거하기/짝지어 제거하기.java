@@ -20,10 +20,7 @@ class Solution
             }
         }
         
-        if(stack.isEmpty())
-            return 1;
-        else
-            return 0;
+        return stack.isEmpty() ? 1 : 0;
         
     }
 }
