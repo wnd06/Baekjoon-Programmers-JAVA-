@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.nio.Buffer;
 import java.util.*;
@@ -23,15 +22,14 @@ public class Main {
             arr[i][1] = st.nextToken();
         }
         Arrays.sort(arr,(e1, e2) -> {
-            if(Integer.parseInt(e1[0]) - Integer.parseInt(e2[0]) < 0)
-                return Integer.parseInt(e1[0]) - Integer.parseInt(e2[0]);
-            else
-                return Integer.parseInt(e1[0]) - Integer.parseInt(e2[0]);
+            return Integer.parseInt(e1[0]) - Integer.parseInt(e2[0]);
         });
-
         for (int i = 0; i < N; i++) {
-            System.out.println(arr[i][0] + " " + arr[i][1]);
+            sb.append(arr[i][0]).append(' ');
+            sb.append(arr[i][1]).append('\n');
         }
+
+        System.out.println(sb);
 
     }
 
