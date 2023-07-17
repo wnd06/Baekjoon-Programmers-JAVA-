@@ -14,7 +14,7 @@ class Solution {
         
         visited = new boolean[n][m];
         visited[0][0] = true;
-        bfs(maps);
+        bfs(maps, 0, 0);
         
         answer = maps[n - 1][m - 1];
         
@@ -24,10 +24,8 @@ class Solution {
         return answer;
     }
     
-    public void bfs(int[][] maps) {
-        int x = 0;
-        int y = 0;
-        
+    public void bfs(int[][] maps, int x, int y) {
+    
         Queue<int[]> q = new LinkedList<>();
         q.add(new int[] {x, y});
         
