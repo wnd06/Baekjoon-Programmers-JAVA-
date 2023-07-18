@@ -42,7 +42,7 @@ public class Main {
                     if(map[j][k] == 1 && !visited[j][k]) {
                         visited[j][k] = true;
                         count++;
-                        bfs(j, k);
+                        dfs(j, k);
                     }
                 }
             }
@@ -73,6 +73,22 @@ public class Main {
                 visited[nextX][nextY] = true;
 
             }
+        }
+    }
+
+    public static void dfs(int x, int y){
+        visited[x][y] = true;
+
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+
+            if(nextX < 0 || nextY < 0 || nextX >= M || nextY >= N)
+                continue;
+            if(map[nextX][nextY] == 0 || visited[nextX][nextY])
+                continue;
+
+            dfs(nextX, nextY);
         }
     }
 }
