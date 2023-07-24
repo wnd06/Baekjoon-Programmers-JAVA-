@@ -11,31 +11,11 @@ public class Main {
         int money = 1000 - N;
         int count = 0;
 
-        {
-            if (money / 500 >= 0) {
-                count += (money / 500);
-                money %= 500;
-            }
-            if (money / 100 >= 0) {
-                count += (money / 100);
-                money %= 100;
-            }
-            if (money / 50 >= 0) {
-                count += (money / 50);
-                money %= 50;
-            }
-            if (money / 10 >= 0) {
-                count += (money / 10);
-                money %= 10;
-            }
-            if (money / 5 >= 0) {
-                count += (money / 5);
-                money %= 5;
-            }
-            if (money / 1 >= 0) {
-                count += (money / 1);
-                money %= 1;
-            }
+        int[] coin = new int[] {500, 100, 50, 10, 5, 1};
+
+        for (int i = 0; i < coin.length; i++) {
+            count += money / coin[i];
+            money %= coin[i];
         }
         System.out.println(count);
     }
