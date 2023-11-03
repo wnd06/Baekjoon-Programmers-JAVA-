@@ -7,7 +7,7 @@ import java.io.FileInputStream;
  */
 class Solution
 {
-//    static int count;
+    static int count;
 
     public static void main(String args[]) throws Exception
     {
@@ -18,7 +18,7 @@ class Solution
 		   따라서 테스트를 수행할 때에는 아래 주석을 지우고 이 메소드를 사용하셔도 좋습니다.
 		   단, 채점을 위해 코드를 제출하실 때에는 반드시 이 메소드를 지우거나 주석 처리 하셔야 합니다.
 		 */
-        //System.setIn(new FileInputStream("/Users/wnd0605/Desktop/Ssafy/oddAdd/src/input/input (10).txt"));
+       // System.setIn(new FileInputStream("/Users/wnd0605/Desktop/Ssafy/oddAdd/src/input/input (10).txt"));
 
 		/*
 		   표준입력 System.in 으로부터 스캐너를 만들어 데이터를 읽어옵니다.
@@ -30,27 +30,30 @@ class Solution
 
         for(int test_case = 1; test_case <= 10; test_case++)
         {
-//            count = 0;
+            count = 0;
             int N = sc.nextInt();
             String[][] arr = new String[8][8];
+            String[][] arr2 = new String[8][8];
 
             //배열 만들기
             for (int i = 0; i < 8; i++) {
                 String[] arrStr = sc.next().split("");
                 for (int j = 0; j < 8; j++) {
                     arr[i][j] = arrStr[j];
+                    arr2[j][i] = arrStr[j];
+
                 }
             }
 
-            //            int index = 0;
             int result = 0;
             for (int index = 0; index < 8; index++) {
                 {
                     for (int i = 0; i <= 8 - N; i++) {
                         result += rowPalindrome(i, i + N - 1, index, arr);
-                        result += columnPalindrome(i, i + N - 1, index, arr);
+                        result += rowPalindrome(i, i + N - 1, index, arr2);
+//                        result += columnPalindrome(i, i + N - 1, index, arr);
+
                     }
-//                    index++;
                 }
             }
 
@@ -73,7 +76,13 @@ class Solution
 
         if (i >= j) return 1;
 
-        if (arr[i][index].equals(arr[j][index])) return columnPalindrome(i + 1, j - 1, index, arr);
+        if (arr[i][index].equals(arr[j][index])) {
+            return columnPalindrome(i + 1, j - 1, index, arr);
+        }
+
+        if (arr[index][i].equals(arr[index][j])) {
+            return columnPalindrome(i + 1, j - 1, index, arr);
+        }
 
         else return 0;
     }
