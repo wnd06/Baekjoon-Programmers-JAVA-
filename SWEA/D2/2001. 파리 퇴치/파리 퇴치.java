@@ -15,7 +15,7 @@ class Solution
 		   따라서 테스트를 수행할 때에는 아래 주석을 지우고 이 메소드를 사용하셔도 좋습니다.
 		   단, 채점을 위해 코드를 제출하실 때에는 반드시 이 메소드를 지우거나 주석 처리 하셔야 합니다.
 		 */
-//        System.setIn(new FileInputStream("/Users/wnd0605/Desktop/Ssafy/oddAdd/src/input/input (11).txt"));
+        // System.setIn(new FileInputStream("/Users/wnd0605/Desktop/Ssafy/oddAdd/src/input/input (11).txt"));
 
 		/*
 		   표준입력 System.in 으로부터 스캐너를 만들어 데이터를 읽어옵니다.
@@ -29,29 +29,23 @@ class Solution
             int N = sc.nextInt();
             int M = sc.nextInt();
             
-            int[][] arr = new int[N][N];
+            int[][] arr = new int[N + 1][N + 1];
 
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    arr[i][j] = sc.nextInt();
-                }
-            }
-            List<Integer> list = new ArrayList<>();
-
-            for (int i = 0; i < N - M + 1; i++) {
-                for (int j = 0; j < N - M + 1; j++) {
-                    int sum = 0;
-                    for (int k = i; k < i + M; k++) {
-                        for (int l = j; l < j + M; l++) {
-                            sum += arr[k][l];
-                        }
-                    }
-                    list.add(sum);
+            for (int i = 1; i <= N; i++) {
+                for (int j = 1; j <= N; j++) {
+                    arr[i][j] = arr[i - 1][j] + arr[i][j - 1] - arr[i - 1][j - 1] + sc.nextInt();
                 }
             }
 
-            int result = list.stream().mapToInt(x -> x).max().getAsInt();
-            System.out.println("#" + test_case + " " + result);
+            int max = 0;
+            for (int i = 1; i <= N - M + 1; i++) {
+                for (int j = 1; j <= N - M + 1; j++) {
+                    int result = arr[i + M - 1][j + M - 1] - arr[i - 1][j + M - 1] - arr[i + M - 1][j - 1] + arr[i - 1][j - 1];
+                    max = Math.max(max, result);
+                }
+            }
+            System.out.println("#" + test_case + " " + max);
+
         }
     }
 }
